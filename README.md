@@ -49,7 +49,6 @@ Jouduimme taistelemaan jonkin aikaa koulun labraverkon asetuksien kanssa, mutta 
 Palvelimelle varatut IP:t: 172.28.230.6-10
 iLO:n etäkäyttö-IP:        172.28.230.6
 Palvelimen IP:             172.28.230.7
-Palvelimen IP (DHCP):      172.28.171.20
 ```
 
 ### Palvelimen levyasetukset
@@ -63,4 +62,24 @@ DevStackia asentaessa kohtasimme taas pari ongelmaa:
 * ZFS-asennusta yrittäessä lisätty apt-repository oli jollain tavalla puutteellinen, jonka takia DevStack antoi virheilmoituksen ja keskeytti asennuksen
 * DevStackin local.conf:issa annettu salasana sisälsi ääkkösiä, joka johti asennuksen virheilmoitukseen *"Not UTF-8 compliant"*
 
-Nämä ongelmat korjattuamme saimme taas DevStackin toimimaan samalla tavalla, kuin aiemminkin.
+Nämä ongelmat korjattuamme saimme taas DevStackin toimimaan samalla tavalla, kuin aiemminkin. Tässä vaiheessa kuitenkin huomattiin, että palvelimelle oli jäänyt väärä IP-osoite.
+
+#### IP-osoitteen vaihto
+
+Jouduimme vaihtamaan palvelimen IP-osoitteen yhdeksi allokoiduista osoitteista, joka taas puolestaan sekoitti DevStackin toiminnan kokonaan. Hallintaliittymä Horizon latautui normaalisti, mutta sisäänkirjautuminen ei enää onnistunut ollenkaan. Syyksi paljastui parin Google-haun jälkeen se, että DevStackin asennuksessa käytetään palvelimen paikallista IP-osoitetta ´localhost´in sijaan, jotta asennus tukisi sellaisenaan myös useamman noden kokoonpanoja. DevStackiin aiemmin kuulunut ´rejoin-stack.sh´ -skripti on valitettavasti poistettu, joten enää ei ole keinoa sammuttaa stackia, muuttaa sen asetuksia ja käynnistää sitä uudelleen. Jouduimme siis koneen IP-osoitteen vaihdon jälkeen ajamaan koko DevStackin asennusprosessin uudelleen.
+
+```
+Oikeat IP-asetukset (lisättiin /etc/network/interfaces):
+auto eno1
+  iface eno1 inet static
+  address 172.28.230.7
+  netmask 255.255.0.0
+  network 172.28.1.0
+  broadcast 172.28.1.255
+  gateway 172.28.1.254
+  dns-nameservers 8.8.8.8
+```
+
+### DevStackin käyttöönotto ja ensimmäinen kokeilu
+
+DevStackiin lisättiin taas ryhmän jäsenille omat käyttäjätunnukset, ja määritettiin pääsy vakiona mukana tulevaan demo-projektiin.
