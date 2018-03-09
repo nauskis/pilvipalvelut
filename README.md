@@ -24,3 +24,27 @@ CloudPlatform IP:         10.207.3.232
 CloudPlatform VM SSH:     10.207.3.232:1001
 DevStack Horizon (GUI):   10.207.3.232:1002
 ```
+
+## Asennus fyysiselle palvelimelle
+
+Siirryimme projektin seuraavaan vaiheeseen toteuttamalla asennuksen fyysiselle palvelimelle koulun Servulassa. Kyseinen palvelin on HP:n ProLiant, jonka 132Gb muistia riittänee projektiin paremmin kuin CloudPlatformin tarjoamat.
+
+### Käyttöjärjestelmän asennus
+
+Asensimme palvelimelle pohjaksi Ubuntu Server 16.04.4 LTS:n, jonka paketit päivitettiin heti asennuksen jälkeen uusimpiin. Otimme välittömästi käyttöön myös palomuurin (`sudo ufw allow 22/tcp && sudo ufw enable`) ja poistimme root-tunnuksen kokonaan käytöstä (estimme salasanalla kirjautumisen sekä käytön SSH-yhteyden yli).
+
+### Verkkoasetukset
+
+Jouduimme taistelemaan jonkin aikaa koulun labraverkon asetuksien kanssa, mutta tuloksena saimme omat osoitteet sekä itse palvelimelle, että sen iLO-etäkäyttöliittymälle. iLO:n kautta voimme hallita etänä koko palvelinta, emmekä vain sen käyttöjärjestelmää.
+
+```
+iLO -etäkäyttö IP:         172.28.230.6
+Palvelimen IP:             172.28.230.7
+Palvelimen IP (DHCP):      172.28.171.20
+```
+### Palvelimen levyasetukset
+
+Yritimme muuttaa palvelimen levyasetuksia niin, että näkisimme sen kovalevyt itsenäisinä laitteina käyttöjärjestelmässä. Ideana oli käyttää hardware RAIDin sijaan ZFS tiedostojärjestelmää, 
+
+### DevStackin asennus
+
