@@ -1,5 +1,6 @@
 # OpenStack -alustan käyttöönotto
 **Projektimme on osa Haaga-Helian Pilviteknologiat-kurssia keväällä 2018**
+
 **Jussi Isosomppi, Samuli Kinnunen, Mikko Knutas, Eino Kupias, Saku Kähäri**
 
 ## Konsepti / virtuaalitoteutus
@@ -34,7 +35,7 @@ Totesimme lisäksi myös, että DevStack-instanssien koekäyttö olisi turhan va
 
 ## Asennus fyysiselle palvelimelle
 
-Siirryimme projektin seuraavaan vaiheeseen toteuttamalla asennuksen fyysiselle palvelimelle koulun Servulassa. Kyseinen palvelin on HP:n ProLiant, jonka 132Gb muistia riittänee projektiin paremmin kuin CloudPlatformin tarjoamat. Palvelimeen on asennettu 8kpl 146Gb 15K RPM SAS-levyjä, jotka riittävät niin nopeudeltaan kuin kapasiteetiltaankin projektiimme hyvin. Tyhjensimme palvelimen kovalevyt, ja siirryimme käyttöjärjestelmän asennukseen.
+Siirryimme projektin seuraavaan vaiheeseen toteuttamalla asennuksen fyysiselle palvelimelle koulun Servulassa. Kyseinen palvelin on HP:n ProLiant DL360p Gen8, jonka 2x Xeon E5-2603 -prosessoria ja 132Gb muistia riittänevät projektiin paremmin kuin CloudPlatformin tarjoamat. Palvelimeen on asennettu 8kpl 146Gb 15K RPM SAS-levyjä, jotka riittävät niin nopeudeltaan kuin kapasiteetiltaankin projektiimme hyvin. Tyhjensimme palvelimen kovalevyt, ja siirryimme käyttöjärjestelmän asennukseen.
 
 ### Käyttöjärjestelmän asennus
 
@@ -42,7 +43,7 @@ Asensimme palvelimelle DevStackin pohjaksi suositellun Ubuntu Server 16.04.4 LTS
 
 ### Verkkoasetukset
 
-Jouduimme taistelemaan jonkin aikaa koulun labraverkon asetuksien kanssa, mutta tuloksena saimme omat osoitteet sekä itse palvelimelle, että sen iLO-etäkäyttöliittymälle. iLO:n kautta voimme hallita etänä koko palvelinta, emmekä vain sen käyttöjärjestelmää. Verkkoyhteyden toimivuus tarkistettiin yksinkertaisesti asentamalla Apache2, avaamalla sille palomuurista portti 80 ja toteamalla sivun näkyvän muillakin koneilla.
+Jouduimme taistelemaan jonkin aikaa koulun labraverkon asetuksien kanssa, mutta tuloksena saimme omat osoitteet sekä itse palvelimelle, että sen iLO-etäkäyttöliittymälle. iLO:n kautta voimme hallita etänä koko palvelinta, emmekä vain sen käyttöjärjestelmää. Määritimme iLO:on projektia varten uuden käyttäjän, jonka avulla voimme esimerkiksi käynnistää palvelimen miltä tahansa labraverkon koneelta. Verkkoyhteyden toimivuus tarkistettiin yksinkertaisesti asentamalla Apache2, avaamalla sille palomuurista portti 80 ja toteamalla placeholder-sivun näkyvän muillakin koneilla.
 
 ```
 Palvelimelle varatut IP:t: 172.28.230.6-10
