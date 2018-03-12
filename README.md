@@ -64,7 +64,7 @@ Nämä ongelmat korjattuamme saimme taas DevStackin toimimaan samalla tavalla, k
 
 #### IP-osoitteen vaihto
 
-Jouduimme vaihtamaan palvelimen IP-osoitteen yhdeksi allokoiduista osoitteista, joka taas puolestaan sekoitti DevStackin toiminnan kokonaan. Hallintaliittymä Horizon latautui normaalisti, mutta sisäänkirjautuminen ei enää onnistunut ollenkaan. Syyksi paljastui parin Google-haun jälkeen se, että DevStackin asennuksessa käytetään palvelimen paikallista IP-osoitetta ´localhost´in sijaan, jotta asennus tukisi sellaisenaan myös useamman noden kokoonpanoja. DevStackiin aiemmin kuulunut ´rejoin-stack.sh´ -skripti on valitettavasti poistettu, joten enää ei ole keinoa sammuttaa stackia, muuttaa sen asetuksia ja käynnistää sitä uudelleen. Jouduimme siis koneen IP-osoitteen vaihdon jälkeen ajamaan koko DevStackin asennusprosessin uudelleen. 
+Jouduimme vaihtamaan palvelimen IP-osoitteen yhdeksi allokoiduista osoitteista, joka taas puolestaan sekoitti DevStackin toiminnan kokonaan. Hallintaliittymä Horizon latautui normaalisti, mutta sisäänkirjautuminen ei enää onnistunut ollenkaan. Syyksi paljastui parin Google-haun jälkeen se, että DevStackin asennuksessa käytetään palvelimen paikallista IP-osoitetta `localhost`in sijaan, jotta asennus tukisi sellaisenaan myös useamman noden kokoonpanoja. DevStackiin aiemmin kuulunut `rejoin-stack.sh` -skripti on valitettavasti poistettu, joten enää ei ole keinoa sammuttaa stackia, muuttaa sen asetuksia ja käynnistää sitä uudelleen. Jouduimme siis koneen IP-osoitteen vaihdon jälkeen ajamaan koko DevStackin asennusprosessin uudelleen. 
 
 ```
 Oikeat IP-asetukset (lisättiin /etc/network/interfaces):
