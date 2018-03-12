@@ -13,9 +13,7 @@ Päätimme toteuttaa projektin ensimmäisenä vaiheena virtuaaliasennuksen, jott
 
 ### DevStackin asennus
 
-DevStackin asennus onnistuu helposti seuraamalla [virallisia asennusohjeita](https://docs.openstack.org/devstack/latest/), kunhan muistaa vaihtaa asetustiedostoon turvallisemmat salasanat *secret*in tilalle.
-Omalle kotipalvelimelle asentaminen sujui suoraan ohjeiden mukaan, mutta koulun CloudPlatform -alustassa asennus keskeytyi, kun yhteyttä GitHubiin ei voitu muodostaa. Syyksi selviytyi koulun verkon rakenne, joka esti yhdistämisen git:// -alkuisiin osoitteisiin. Kyseessä lienee palomuurin tai proxyn asetukset.
-Kyseiset osoitteet voi onneksi muuttaa perinteisiksi https:// -osoitteeksi antamalla komento `git config --global url."https://".insteadOf git://`, joka korjasi ongelman heti seuraavalla asennusyrityksellä.
+DevStackin asennus onnistuu helposti seuraamalla [virallisia asennusohjeita](https://docs.openstack.org/devstack/latest/), kunhan muistaa vaihtaa asetustiedostoon turvallisemmat salasanat *secret*in tilalle. Omalle kotipalvelimelle asentaminen sujui suoraan ohjeiden mukaan, mutta koulun CloudPlatform -alustassa asennus keskeytyi, kun yhteyttä GitHubiin ei voitu muodostaa. Syynä tähän ovat ilmeisesti koulun verkon palomuurin tai proxyn asetukset, jotka estävät yhdistämisen git:// -alkuisiin osoitteisiin. Kyseiset osoitteet voi onneksi muuttaa perinteisiksi https:// -osoitteeksi antamalla komento `git config --global url."https://".insteadOf git://`, joka korjasi ongelman heti seuraavalla asennusyrityksellä.
 
 DevStackin asennusskriptin ajaminen CloudPlatformiin kesti n. 27min, jonka aikana asennusskripti latasi ajan tasalla olevat versiot DevStackin sisältämistä OpenStack -moduleista.
 
@@ -31,7 +29,7 @@ DevStack Horizon (GUI):   10.207.3.232:1002
 
 Teimme tämän jälkeen jokaiselle ryhmän jäsenelle omat käyttäjätunnukset, ja varmistimme niiden toimivan kunkin omalla selaimella. Näin varmistuimme port forwardien ja muiden verkkoasetusten sekä DevStackin verkkohallintaliittymän toimivuudesta. Yritimme myös luoda jokaiselle omaa virtuaalikonetta (instanssia), mutta valitettavasti CloudPlatform-virtuaalikoneestamme loppui ilmeisesti muisti kesken. CloudPlatformissa olemassa olevan virtuaalikoneen laitteistokokoonpanoa voi kyllä muuttaa, mutta vain sammuttamalla virtuaalikoneen ja vain ennalta määräitettyihin kokoonpanoihin. Tässä yhteydessä edes CloudPlatformiin määritelty *Large Instance* ei riittänyt tarpeisiimme, joten totesimme CloudPlatform-kokeilun lähestyvän loppuaan.  
 
-Totesimme lisäksi myös, että DevStack-instanssien koekäyttö olisi turhan vaikeaa, koska niille olisi pitänyt määritellä port forward -sääntöjä sekä CloudPlatformin että DevStackin virtuaalireitittimiin. Tämän lisäksi CloudPlatform sallii vain rajallisen määrän port forwardeja, eikä se olisi pidemmän päälle riittänyt tarpeisiimme.
+Totesimme lisäksi myös, että DevStack-instanssien koekäyttö olisi turhan vaikeaa, koska niille olisi pitänyt määritellä peräkkäisiä port forward -sääntöjä sekä CloudPlatformin että DevStackin virtuaalireitittimiin. Tämän lisäksi CloudPlatform sallii yhdelle projektille vain rajallisen määrän port forwardeja (10kpl?), eikä se olisi pidemmän päälle riittänyt tarpeisiimme.
 
 ## Asennus fyysiselle palvelimelle
 
@@ -66,7 +64,7 @@ Nämä ongelmat korjattuamme saimme taas DevStackin toimimaan samalla tavalla, k
 
 #### IP-osoitteen vaihto
 
-Jouduimme vaihtamaan palvelimen IP-osoitteen yhdeksi allokoiduista osoitteista, joka taas puolestaan sekoitti DevStackin toiminnan kokonaan. Hallintaliittymä Horizon latautui normaalisti, mutta sisäänkirjautuminen ei enää onnistunut ollenkaan. Syyksi paljastui parin Google-haun jälkeen se, että DevStackin asennuksessa käytetään palvelimen paikallista IP-osoitetta ´localhost´in sijaan, jotta asennus tukisi sellaisenaan myös useamman noden kokoonpanoja. DevStackiin aiemmin kuulunut ´rejoin-stack.sh´ -skripti on valitettavasti poistettu, joten enää ei ole keinoa sammuttaa stackia, muuttaa sen asetuksia ja käynnistää sitä uudelleen. Jouduimme siis koneen IP-osoitteen vaihdon jälkeen ajamaan koko DevStackin asennusprosessin uudelleen.
+Jouduimme vaihtamaan palvelimen IP-osoitteen yhdeksi allokoiduista osoitteista, joka taas puolestaan sekoitti DevStackin toiminnan kokonaan. Hallintaliittymä Horizon latautui normaalisti, mutta sisäänkirjautuminen ei enää onnistunut ollenkaan. Syyksi paljastui parin Google-haun jälkeen se, että DevStackin asennuksessa käytetään palvelimen paikallista IP-osoitetta ´localhost´in sijaan, jotta asennus tukisi sellaisenaan myös useamman noden kokoonpanoja. DevStackiin aiemmin kuulunut ´rejoin-stack.sh´ -skripti on valitettavasti poistettu, joten enää ei ole keinoa sammuttaa stackia, muuttaa sen asetuksia ja käynnistää sitä uudelleen. Jouduimme siis koneen IP-osoitteen vaihdon jälkeen ajamaan koko DevStackin asennusprosessin uudelleen. 
 
 ```
 Oikeat IP-asetukset (lisättiin /etc/network/interfaces):
