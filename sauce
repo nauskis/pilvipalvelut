@@ -3,3 +3,9 @@ Käytettyjä lähteitä:
 https://docs.openstack.org/developer/devstack/
 https://docs.openstack.org/newton/install-guide-ubuntu/
 https://www.reddit.com/r/openstack/comments/7nrz23/starting_off_with_devstack_legit/
+
+
+Verkko-ongelmiin:
+https://docs.openstack.org/devstack/latest/guides/neutron.html
+https://stackoverflow.com/questions/26182319/set-up-devstack-with-two-ethernet-interfaces
+https://docs.openstack.org/ocata/install-guide-obs/launch-instance-networks-provider.html
