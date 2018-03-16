@@ -9,3 +9,7 @@ Verkko-ongelmiin:
 https://docs.openstack.org/devstack/latest/guides/neutron.html
 https://stackoverflow.com/questions/26182319/set-up-devstack-with-two-ethernet-interfaces
 https://docs.openstack.org/ocata/install-guide-obs/launch-instance-networks-provider.html
+
+Toisen levyn formatointi ja lisäys:
+https://help.ubuntu.com/community/InstallingANewHardDrive
+https://serverfault.com/questions/602103/devstack-how-to-add-directly-attached-storage-to-a-single-node-installation
