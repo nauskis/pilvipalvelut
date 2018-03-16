@@ -1,0 +1,10 @@
+# Tiedossa olevat bugit/onglmat
+
+* Linuxin asennus levylle normaaleista ISOista ei toimi
+  * Vääränlainen image?
+  * Vikaa käyttöoikeuksissa?
+* Virtuaalikonsolissa keymap/translate -virhe, tulkitsee näppäilyt väärin
+  * NoVNC:n versiossa tai asetuksissa virhe? (Keymap -määritys pois asetuksista)
+* Virtuaalikoneille ei saa IP-osoitteita labraverkon DHCP-palvelimelta
+  * TÄRKEÄ
+  * Asetuksiin pitäisi saada määritettyä ulkoinen DHCP (ks. Provider network)
