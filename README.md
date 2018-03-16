@@ -48,7 +48,8 @@ Jouduimme taistelemaan jonkin aikaa koulun labraverkon asetuksien kanssa, mutta 
 ```
 Palvelimelle varatut IP:t: 172.28.230.6-10
 iLO:n etäkäyttö-IP:        172.28.230.6
-Palvelimen IP:             172.28.230.7
+Palvelimen GUI IP:         172.28.230.7
+Instanssien exit point:    172.28.230.8
 ```
 
 ### Palvelimen levyasetukset
