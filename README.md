@@ -76,6 +76,7 @@ Jouduimme vaihtamaan palvelimen IP-osoitteen yhdeksi allokoiduista osoitteista, 
 
 ```
 Oikeat IP-asetukset (lisättiin /etc/network/interfaces):
+
 auto eno1
   iface eno1 inet static
   address 172.28.230.7
@@ -84,6 +85,15 @@ auto eno1
   broadcast 172.28.1.255
   gateway 172.28.1.254
   dns-nameservers 8.8.8.8
+  
+auto eno2
+  iface eno2 inet static
+  address 172.28.230.8
+  netmask 255.255.0.0
+  network 172.28.1.0
+  broadcast 172.28.1.255
+  gateway 172.28.1.254
+
 ```
 
 ### DevStackin käyttöönotto ja ensimmäinen kokeilu
