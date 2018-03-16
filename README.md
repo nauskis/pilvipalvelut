@@ -3,7 +3,7 @@
 
 **Jussi Isosomppi, Samuli Kinnunen, Mikko Knutas, Eino Kupias, Saku Kähäri**
 
-###### **DevStack asennettu alusta loppuun uudestaan `8` kertaa**
+###### **DevStack asennettu alusta loppuun uudestaan `9` kertaa**
 
 ## Konsepti / virtuaalitoteutus
 
@@ -53,7 +53,13 @@ Palvelimen IP:             172.28.230.7
 
 ### Palvelimen levyasetukset
 
-Yritimme muuttaa palvelimen levyasetuksia niin, että näkisimme sen kovalevyt itsenäisinä laitteina käyttöjärjestelmässä. Ideana oli käyttää hardware RAIDin sijaan ZFS tiedostojärjestelmää, jolloin olisimme saaneet itse päättää levyjen pariteettitiedot. Valitettavasti HP:n Smart Array -RAID-kortti ei kuitenkaan tue enempää kuin kahta loogista levyä ilman lisämuistin asennusta. 
+Yritimme muuttaa palvelimen levyasetuksia niin, että näkisimme sen kovalevyt itsenäisinä laitteina käyttöjärjestelmässä. Ideana oli käyttää hardware RAIDin sijaan ZFS tiedostojärjestelmää, jolloin olisimme saaneet itse päättää levyjen pariteettitiedot. Valitettavasti HP:n Smart Array -RAID-kortti ei kuitenkaan tue enempää kuin kahta loogista levyä ilman lisämuistin asennusta.
+
+Lopullinen levyratkaisu oli seuraava:
+
+* 2x 146Gb levyä RAID 1 -tilassa (mirror) -> käyttöjärjestelmä (136Gb formatoituna)
+* 6x 146Gb levyä RAID 1 -tilassa (mirror) -> tallennustila (410Gb formatoituna)
+
 
 ### DevStackin asennus
 
