@@ -3,7 +3,7 @@
 
 **Jussi Isosomppi, Samuli Kinnunen, Mikko Knutas, Eino Kupias, Saku Kähäri**
 
-###### **DevStack asennettu alusta loppuun uudestaan `7` kertaa**
+###### **DevStack asennettu alusta loppuun uudestaan `8` kertaa**
 
 ## Konsepti / virtuaalitoteutus
 
