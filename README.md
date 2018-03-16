@@ -1,7 +1,9 @@
-# OpenStack -alustan käyttöönotto
+# OpenStack-pohjainen pilvitallennusratkaisu
 **Projektimme on osa Haaga-Helian Pilviteknologiat-kurssia keväällä 2018**
 
 **Jussi Isosomppi, Samuli Kinnunen, Mikko Knutas, Eino Kupias, Saku Kähäri**
+
+###### **DevStack asennettu alusta loppuun uudestaan `6` kertaa**
 
 ## Konsepti / virtuaalitoteutus
 
