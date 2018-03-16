@@ -80,4 +80,7 @@ auto eno1
 
 ### DevStackin käyttöönotto ja ensimmäinen kokeilu
 
-DevStackiin lisättiin taas ryhmän jäsenille omat käyttäjätunnukset, ja määritettiin pääsy vakiona mukana tulevaan demo-projektiin.
+DevStackiin lisättiin taas ryhmän jäsenille omat käyttäjätunnukset, ja määritettiin pääsy vakiona mukana tulevaan demo-projektiin. Omien ISO-tiedostojen lisääminen onnistuu helposti, ja uusien instanssien luominen on helppoa valmiiden laitteistokokoonpanojen ansiosta.
+
+Instanssien käyttöönotto helpottui huomattavasti, kun avattiin portti `6080` NoVNC-virtuaalikonsolia varten. Tämän jälkeen selainkäyttöliittymän virtuaalikonsoli toimi moitteettomasti, ja yllättävän pienellä viiveellä. Käyttöjärjestelmien asennus onnistuu tämän jälkeen normaalisti. Jokaiselle instanssille on saatavilla ainoastaan sen laitteistokokoonpanon (flavor) mukaisesti levytilaa.
+
