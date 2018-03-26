@@ -1,4 +1,4 @@
-# Tiedossa olevat bugit/onglmat
+# Tiedossa olevat bugit/ongelmat
 
 * Linuxin asennus levylle normaaleista ISOista ei toimi
   * Vääränlainen image?
