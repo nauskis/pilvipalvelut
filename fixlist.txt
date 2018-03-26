@@ -15,7 +15,8 @@
    *Ei toiminut
  -Tai:
   https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2012
-   *En ehtinyt kokeilla, kun vedettiin network alas. Find out in the next exciting episode!
+   *En ehtinyt kokeilla, kun vedettiin network alas. Ensi kerralla muuta ISO -tyyppi imagea luodessa. 
+    Will it work, or is the whole openstack doomed? Find out in the next exciting episode!
  
 
 * Yritys luoda uusi network ja siihen reititin ei onnistunut
