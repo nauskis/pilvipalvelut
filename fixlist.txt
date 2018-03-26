@@ -13,3 +13,10 @@
  -kokeillaan seuraavaa ohjetta:
   https://docs.openstack.org/image-guide/windows-image.html
   * En ehtinyt kokeilla, kun vedettiin network alas. Find out in the next exciting episode!
+
+* Yritys luoda uusi network ja siihen reititin ei onnistunut
+  -Pitäisi olla provider network (external)
+  -https://docs.openstack.org/mitaka/install-guide-ubuntu/launch-instance-networks-provider.html
+   *Kyseistä ohjetta kokeiltu entuudestaan, ei toiminut. 
+   
+   
