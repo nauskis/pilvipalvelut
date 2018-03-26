@@ -9,10 +9,14 @@
   * TÄRKEÄ
   * Asetuksiin pitäisi saada määritettyä ulkoinen DHCP (ks. Provider network)
 
-* Windows 2012 server R2 asennuskuva ei toiminut. Etsitään toimivaa
- -kokeillaan seuraavaa ohjetta:
+* Windows 2012 server R2 Instance:
+ -Kokeillaan seuraavaa ohjetta:
   https://docs.openstack.org/image-guide/windows-image.html
-  * En ehtinyt kokeilla, kun vedettiin network alas. Find out in the next exciting episode!
+   *Ei toiminut
+ -Tai:
+  https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2012
+   *En ehtinyt kokeilla, kun vedettiin network alas. Find out in the next exciting episode!
+ 
 
 * Yritys luoda uusi network ja siihen reititin ei onnistunut
   -Pitäisi olla provider network (external)
