@@ -10,3 +10,5 @@
   * Asetuksiin pitäisi saada määritettyä ulkoinen DHCP (ks. Provider network)
 
 * Windows 2012 server R2 asennuskuva ei toiminut. Etsitään toimivaa
+ -kokeillaan seuraavaa ohjetta:
+  https://docs.openstack.org/image-guide/windows-image.html
