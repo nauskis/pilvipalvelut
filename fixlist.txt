@@ -12,3 +12,4 @@
 * Windows 2012 server R2 asennuskuva ei toiminut. Etsitään toimivaa
  -kokeillaan seuraavaa ohjetta:
   https://docs.openstack.org/image-guide/windows-image.html
+  * En ehtinyt kokeilla, kun vedettiin network alas. Find out in the next exciting episode!
