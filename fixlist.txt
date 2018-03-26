@@ -8,3 +8,5 @@
 * Virtuaalikoneille ei saa IP-osoitteita labraverkon DHCP-palvelimelta
   * TÄRKEÄ
   * Asetuksiin pitäisi saada määritettyä ulkoinen DHCP (ks. Provider network)
+
+* Windows 2012 server R2 asennuskuva ei toiminut. Etsitään toimivaa
