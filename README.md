@@ -103,3 +103,12 @@ DevStackiin lisättiin taas ryhmän jäsenille omat käyttäjätunnukset, ja mä
 
 Instanssien käyttöönotto helpottui huomattavasti, kun avattiin portti `6080` NoVNC-virtuaalikonsolia varten. Tämän jälkeen selainkäyttöliittymän virtuaalikonsoli toimi moitteettomasti, ja yllättävän pienellä viiveellä. Käyttöjärjestelmien asennus onnistuu tämän jälkeen normaalisti. Jokaiselle instanssille on saatavilla ainoastaan sen laitteistokokoonpanon (flavor) mukaisesti levytilaa.
 
+### Ohjelmiston päivitys
+
+Syystä tai toisesta ohjelmistojen päivitys ja asennus (`apt-get` -komennot) toimivat palvelimellamme todella hitaasti. Tästä hitaudesta pääsee eroon pakottamalla käyttöön IPv4-osoitteet päivityksiin. Tämä onnistuu lisäämällä `apt-get` -komentoihin lisäarvo `-o Acquire::ForceIPv4=true`.
+
+### VPN-palvelun käyttöönotto palvelimella
+
+*Päätimme ottaa palvelimelle käyttöön myös VPN-palvelun, jonka avulla projektia voidaan edistää myös koulun labraverkon ulkopuolelta.*
+
+*Asennus on toistaiseksi kesken.* 
