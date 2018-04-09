@@ -29,3 +29,6 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server
 
 OpenStack portit:
 https://docs.openstack.org/juno/config-reference/content/firewalls-default-ports.html
+
+Not enough hosts:
+https://ask.openstack.org/en/question/92701/no-valid-host-was-found-there-are-not-enough-hosts-available/
