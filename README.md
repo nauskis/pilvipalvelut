@@ -3,7 +3,7 @@
 
 **Jussi Isosomppi, Samuli Kinnunen, Mikko Knutas, Eino Kupias, Saku Kähäri**
 
-###### **DevStack asennettu alusta loppuun uudestaan `12` kertaa**
+###### **DevStack asennettu alusta loppuun uudestaan `14` kertaa**
 
 ## Konsepti / virtuaalitoteutus
 
@@ -105,10 +105,6 @@ Instanssien käyttöönotto helpottui huomattavasti, kun avattiin portti `6080` 
 
 ### Ohjelmiston päivitys
 
-Syystä tai toisesta ohjelmistojen päivitys ja asennus (`apt-get` -komennot) toimivat palvelimellamme todella hitaasti. Tästä hitaudesta pääsee eroon pakottamalla käyttöön IPv4-osoitteet päivityksiin. Tämä onnistuu lisäämällä `apt-get` -komentoihin lisäarvo `-o Acquire::ForceIPv4=true`.
+Syystä tai toisesta ohjelmistojen päivitys ja asennus (`apt-get` -komennot) toimivat palvelimellamme todella hitaasti DevStackin asennuksen jälkeen (DevStackin virtuaalireititin vaikuttaa ehkä tähän?). Tästä hitaudesta pääsee eroon pakottamalla käyttöön IPv4-osoitteet päivityksiin. Tämä onnistuu lisäämällä `apt-get` -komentoihin lisäarvo `-o Acquire::ForceIPv4=true`.
 
-### VPN-palvelun käyttöönotto palvelimella
-
-*Päätimme ottaa palvelimelle käyttöön myös VPN-palvelun, jonka avulla projektia voidaan edistää myös koulun labraverkon ulkopuolelta.*
-
-*Asennus on toistaiseksi kesken.* 
+## 
