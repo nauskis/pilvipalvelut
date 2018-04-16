@@ -5,6 +5,27 @@
 
 ###### **DevStack asennettu alusta loppuun uudestaan `14` kertaa**
 
+## Mitä, Miksi
+Projektimme tavoitteena on alustavasti ollut pystyttää koulun palvelimelle oma pilvipalvelu (Openstack) ja luoda sinne eri käyttöjärjestelmillä toimivia virtuaalikoneita. Tämä saattaa vielä kestää tovin, joten ei mennä vielä sen pidemmälle.
+
+Openstack on kokoelma eri työkaluja julkisten ja yksityisten pilvipalveluiden rakentamiseen. 
+Pilvipalveluiden tarkoituksena on tarjota resursseja asiakkaan käytettäväksi etänä. Tämä tarkoittaa että softa toimii palveluna luotettavalla ja helposti skaalautuvalla serverillä, eikä asiakkaan / käyttäjän omalla tietokoneella. Openstack voidaan siis sijoittaa IaaS -kategoriaan (Infrastructure as a service).
+
+Openstack on avoimen lähdekoodin ohjelma, joten kuka tahansa voi tarkastella sen eri osia ja tehdä niihin haluttavia muutoksia tai lisätä kokonaan uusia osia.
+Sen vakiokokoonpano koostuu seuraavista osista:
+
+**Nova** on pääasiallinen laskentaa suorittava ohjelma Openstackin taustalla. Se valjastaa virtuaalikoneita ja muita instansseja suorittamaan laskentaa.  
+ **Swift** on varastointijärjestelmä kohteille ja tiedostoille.  
+**Cinder** Block storage -komponentti.  
+**Neutron** mahdollistaa, että Openstackin eri osat voivat kommunikoida keskenään.  
+**Horizon** tarjoaa graafisen käyttöjärjestelmän Openstackiin.  
+**Keystone** käytetään käyttäjien kartoitukseen. Listaa käyttäjät ja näyttää heille osat joiden käyttämiseen heillä on oikeudet.  
+**Glance** mahdollistaa että voidaan ottaa imageja (virtuaalisia kopioita) kovalevyistä ja käyttää näitä "kuvia" pohjina, kun
+asennetaan uusia virtuaalikoneita.  
+**Ceilometer** pitää kirjaa erillisten käyttäjien resurssien kulutuksesta (mittari / laskutus).  
+**Heat** mahdollistaa että kehittäjät voivat tallentaa eri pilvipalvelun applikaatioiden vaatimuksia tiedostoon, jossa
+määritellään mitkä resurssit ovat välttämättömiä kyseiselle ohjelmalle. **Saa selventää, vähän epävarma tästä**
+
 ## Konsepti / virtuaalitoteutus
 
 Projektimme tarkoituksena on luoda useasta nodesta koostuva OpenStack -asennus, jossa on huomiotu tuotantotason ratkaisun vaatima tietoturva ja vikasietoisuus. Loppuratkaisun tulisi olla käytännössä yrityksen käyttöön soveltuva, "valmis" ratkaisu.
@@ -107,23 +128,3 @@ Instanssien käyttöönotto helpottui huomattavasti, kun avattiin portti `6080` 
 
 Syystä tai toisesta ohjelmistojen päivitys ja asennus (`apt-get` -komennot) toimivat palvelimellamme todella hitaasti DevStackin asennuksen jälkeen (DevStackin virtuaalireititin vaikuttaa ehkä tähän?). Tästä hitaudesta pääsee eroon pakottamalla käyttöön IPv4-osoitteet päivityksiin. Tämä onnistuu lisäämällä `apt-get` -komentoihin lisäarvo `-o Acquire::ForceIPv4=true`.
 
-## Mitä, Miksi
-Projektimme tavoitteena on alustavasti ollut pystyttää koulun palvelimelle oma pilvipalvelu (Openstack) ja luoda sinne eri käyttöjärjestelmillä toimivia virtuaalikoneita. Tämä saattaa vielä kestää tovin, joten ei mennä vielä sen pidemmälle.
-
-Openstack on kokoelma eri työkaluja julkisten ja yksityisten pilvipalveluiden rakentamiseen. 
-Pilvipalveluiden tarkoituksena on tarjota resursseja asiakkaan käytettäväksi etänä. Tämä tarkoittaa että softa toimii palveluna luotettavalla ja helposti skaalautuvalla serverillä, eikä asiakkaan / käyttäjän omalla tietokoneella. Openstack voidaan siis sijoittaa IaaS -kategoriaan (Infrastructure as a service).
-
-Openstack on avoimen lähdekoodin ohjelma, joten kuka tahansa voi tarkastella sen eri osia ja tehdä niihin haluttavia muutoksia tai lisätä kokonaan uusia osia.
-Sen vakio kokoonpano koostuu seuraavista osista:
-
-**Nova** on pääasiallinen laskentaa suorittava ohjelma Openstackin taustalla. Se valjastaa virtuaalikoneita ja muita instansseja suorittamaan laskentaa.  
- **Swift** on varastointijärjestelmä kohteille ja tiedostoille.  
-**Cinder** Block storage -komponentti.  
-**Neutron** mahdollistaa, että Openstackin eri osat voivat kommunikoida keskenään.  
-**Horizon** tarjoaa graafisen käyttöjärjestelmän Openstackiin.  
-**Keystone** käytetään käyttäjien kartoitukseen. Listaa käyttäjät ja näyttää heille osat joiden käyttämiseen heillä on oikeudet.  
-**Glance** mahdollistaa että voidaan ottaa imageja (virtuaalisia kopioita) kovalevyistä ja käyttää näitä "kuvia" pohjina, kun
-asennetaan uusia virtuaalikoneita.  
-**Ceilometer** pitää kirjaa erillisten käyttäjien resurssien kulutuksesta (mittari / laskutus).  
-**Heat** mahdollistaa että kehittäjät voivat tallentaa eri pilvipalvelun applikaatioiden vaatimuksia tiedostoon, jossa
-määritellään mitkä resurssit ovat välttämättömiä kyseiselle ohjelmalle. **Saa selventää, vähän epävarma tästä**
