@@ -3,7 +3,7 @@
 
 **Jussi Isosomppi, Samuli Kinnunen, Mikko Knutas, Eino Kupias, Saku Kähäri**
 
-###### **DevStack asennettu alusta loppuun uudestaan `14` kertaa**
+###### **DevStack asennettu alusta loppuun uudestaan `16` kertaa**
 
 ## Mitä, Miksi
 Projektimme tavoitteena on alustavasti ollut pystyttää koulun palvelimelle oma pilvipalvelu (Openstack) ja luoda sinne eri käyttöjärjestelmillä toimivia virtuaalikoneita. Tämä saattaa vielä kestää tovin, joten ei mennä vielä sen pidemmälle.
@@ -124,7 +124,13 @@ DevStackiin lisättiin taas ryhmän jäsenille omat käyttäjätunnukset, ja mä
 
 Instanssien käyttöönotto helpottui huomattavasti, kun avattiin portti `6080` NoVNC-virtuaalikonsolia varten. Tämän jälkeen selainkäyttöliittymän virtuaalikonsoli toimi moitteettomasti, ja yllättävän pienellä viiveellä. Käyttöjärjestelmien asennus onnistuu tämän jälkeen normaalisti. Jokaiselle instanssille on saatavilla ainoastaan sen laitteistokokoonpanon (flavor) mukaisesti levytilaa.
 
-### Ohjelmiston päivitys
+### Ohjelmistopäivitysten hitaus
 
-Syystä tai toisesta ohjelmistojen päivitys ja asennus (`apt-get` -komennot) toimivat palvelimellamme todella hitaasti DevStackin asennuksen jälkeen (DevStackin virtuaalireititin vaikuttaa ehkä tähän?). Tästä hitaudesta pääsee eroon pakottamalla käyttöön IPv4-osoitteet päivityksiin. Tämä onnistuu lisäämällä `apt-get` -komentoihin lisäarvo `-o Acquire::ForceIPv4=true`.
+Syystä tai toisesta ohjelmistojen päivitys ja asennus (`apt-get` -komennot) toimivat palvelimellamme todella hitaasti DevStackin asennuksen jälkeen (DevStackin virtuaalireititin vaikuttaa ehkä tähän?). Ongelma kuitenkin syntyy ainoastaan IPv6-yhteyttä käyttäessä, joten siitä pääsee eroon pakottamalla käyttöön IPv4-osoitteet päivityksiin. Tämä onnistuu lisäämällä `apt-get` -komentoihin tarkennus `-o Acquire::ForceIPv4=true`.
 
+### Verkkoasetukset, osa 2
+Koulun labraverkko itsessään ei tuottanut projektille juurikaan ongelmia, vaan lähinnä sen tarkasti määritelty IP-avaruus. DevStack ei tue ulkoisen DHCP-palvelimen käyttöä, vaan tahtoo itse jakaa julkiset, "oikeat" IP-osoitteet instansseilleen. Tästä johtuen jouduimme taistelemaan melko pitkään sopivien asetusten kanssa, ettemme sekoittaisi muun labraverkon toimintaa omilla virtuaalireitittimillämme. OpenStackin virtuaalireitittimen _ei pitäisi_ vastata ulkopuolisiin DHCP-pyyntöihin, mutta lähestymme asiaa mielummin varovasti, koska emme voi tätä varmistaa.
+
+## Instanssien käyttöönotto
+
+OpenStackiin on helppo luoda erilaisia virtuaalikoneita (instanssi, instance) ennakkoon määriteltyjen laitteistokokoonpanojen (flavor) mukaan. DevStackin asennuksessa tulee jo valmiiksi mukana kattava valikoima kokoonpanoja erilaisilla prosessori-, muisti-, ja levytilamäärittelyillä. Tämän lisäksi riittävillä oikeuksilla varustettu käyttäjä voi luoda myös mukautettuja kokoonpanoja omien tarpeidensa mukaan.
