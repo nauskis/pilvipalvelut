@@ -3,7 +3,7 @@
 
 **Jussi Isosomppi, Samuli Kinnunen, Mikko Knutas, Eino Kupias, Saku Kähäri**
 
-###### **DevStack asennettu alusta loppuun uudestaan `14` kertaa**
+###### **DevStack asennettu alusta loppuun uudestaan `15` kertaa**
 
 ## Konsepti / virtuaalitoteutus
 
@@ -41,9 +41,9 @@ Siirryimme projektin seuraavaan vaiheeseen toteuttamalla asennuksen fyysiselle p
 
 Asensimme palvelimelle DevStackin pohjaksi suositellun Ubuntu Server 16.04.4 LTS:n, jonka paketit päivitettiin heti asennuksen jälkeen uusimpiin. Otimme välittömästi käyttöön myös palomuurin (`sudo ufw allow 22/tcp && sudo ufw enable`) ja poistimme root-tunnuksen kokonaan käytöstä (estimme salasanalla kirjautumisen sekä käytön SSH-yhteyden yli). Kokeilimme SSH-yhteyden toimivuuden sekä labraluokan 5004 koneilta että omilta läppäreiltä (Tielab -WLAN on osa labraverkkoa).
 
-### Verkkoasetukset
+### Verkkoasetukset, osa 1
 
-Jouduimme taistelemaan jonkin aikaa koulun labraverkon asetuksien kanssa, mutta tuloksena saimme omat osoitteet sekä itse palvelimelle, että sen iLO-etäkäyttöliittymälle. iLO:n kautta voimme hallita etänä koko palvelinta, emmekä vain sen käyttöjärjestelmää. Määritimme iLO:on projektia varten uuden käyttäjän, jonka avulla voimme esimerkiksi käynnistää palvelimen miltä tahansa labraverkon koneelta. Verkkoyhteyden toimivuus tarkistettiin yksinkertaisesti asentamalla Apache2, avaamalla sille palomuurista portti 80 ja toteamalla placeholder-sivun näkyvän muillakin koneilla.
+Jouduimme taistelemaan jonkin aikaa koulun labraverkon asetuksien kanssa, mutta tuloksena saimme omat osoitteet sekä itse palvelimelle, että sen iLO-etäkäyttöliittymälle. iLO:n kautta voimme hallita etänä koko palvelinta, emmekä vain sen käyttöjärjestelmää. Määritimme iLO:on projektia varten uuden käyttäjän, jonka avulla voimme esimerkiksi käynnistää palvelimen miltä tahansa labraverkon koneelta. Verkkoyhteyden toimivuus tarkistettiin yksinkertaisesti asentamalla Apache2, avaamalla sille palomuurista portti 80 ja toteamalla placeholder-sivun näkyvän muillakin koneilla. 
 
 ```
 Palvelimelle varatut IP:t: 172.28.230.6-10
@@ -75,9 +75,8 @@ Nämä ongelmat korjattuamme saimme taas DevStackin toimimaan samalla tavalla, k
 
 Jouduimme vaihtamaan palvelimen IP-osoitteen yhdeksi allokoiduista osoitteista, joka taas puolestaan sekoitti DevStackin toiminnan kokonaan. Hallintaliittymä Horizon latautui normaalisti, mutta sisäänkirjautuminen ei enää onnistunut ollenkaan. Syyksi paljastui parin Google-haun jälkeen se, että DevStackin asennuksessa käytetään palvelimen paikallista IP-osoitetta `localhost`in sijaan, jotta asennus tukisi sellaisenaan myös useamman noden kokoonpanoja. DevStackiin aiemmin kuulunut `rejoin-stack.sh` -skripti on valitettavasti poistettu, joten enää ei ole keinoa sammuttaa stackia, muuttaa sen asetuksia ja käynnistää sitä uudelleen. Jouduimme siis koneen IP-osoitteen vaihdon jälkeen ajamaan koko DevStackin asennusprosessin uudelleen. 
 
-```
 Oikeat IP-asetukset (lisättiin /etc/network/interfaces):
-
+```
 auto eno1
   iface eno1 inet static
   address 172.28.230.7
@@ -103,8 +102,13 @@ DevStackiin lisättiin taas ryhmän jäsenille omat käyttäjätunnukset, ja mä
 
 Instanssien käyttöönotto helpottui huomattavasti, kun avattiin portti `6080` NoVNC-virtuaalikonsolia varten. Tämän jälkeen selainkäyttöliittymän virtuaalikonsoli toimi moitteettomasti, ja yllättävän pienellä viiveellä. Käyttöjärjestelmien asennus onnistuu tämän jälkeen normaalisti. Jokaiselle instanssille on saatavilla ainoastaan sen laitteistokokoonpanon (flavor) mukaisesti levytilaa.
 
-### Ohjelmiston päivitys
+### Ohjelmistopäivitysten hitaus
 
-Syystä tai toisesta ohjelmistojen päivitys ja asennus (`apt-get` -komennot) toimivat palvelimellamme todella hitaasti DevStackin asennuksen jälkeen (DevStackin virtuaalireititin vaikuttaa ehkä tähän?). Tästä hitaudesta pääsee eroon pakottamalla käyttöön IPv4-osoitteet päivityksiin. Tämä onnistuu lisäämällä `apt-get` -komentoihin lisäarvo `-o Acquire::ForceIPv4=true`.
+Syystä tai toisesta ohjelmistojen päivitys ja asennus (`apt-get` -komennot) toimivat palvelimellamme todella hitaasti DevStackin asennuksen jälkeen (DevStackin virtuaalireititin vaikuttaa ehkä tähän?). Ongelma kuitenkin syntyy ainoastaan IPv6-yhteyttä käyttäessä, joten siitä pääsee eroon pakottamalla käyttöön IPv4-osoitteet päivityksiin. Tämä onnistuu lisäämällä `apt-get` -komentoihin tarkennus `-o Acquire::ForceIPv4=true`.
 
-## 
+### Verkkoasetukset, osa 2
+Koulun labraverkko itsessään ei tuottanut projektille juurikaan ongelmia, vaan lähinnä sen tarkasti määritelty IP-avaruus. DevStack ei tue ulkoisen DHCP-palvelimen käyttöä, vaan tahtoo itse jakaa julkiset, "oikeat" IP-osoitteet instansseilleen. Tästä johtuen jouduimme taistelemaan melko pitkään sopivien asetusten kanssa, ettemme sekoittaisi muun labraverkon toimintaa omilla virtuaalireitittimillämme. OpenStackin virtuaalireitittimen _ei pitäisi_ vastata ulkopuolisiin DHCP-pyyntöihin, mutta lähestymme asiaa mielummin varovasti, koska emme voi tätä varmistaa.
+
+## Instanssien käyttöönotto
+
+OpenStackiin on helppo luoda erilaisia virtuaalikoneita (instanssi, instance) ennakkoon määriteltyjen laitteistokokoonpanojen (flavor) mukaan. DevStackin asennuksessa tulee jo valmiiksi mukana kattava valikoima kokoonpanoja erilaisilla prosessori-, muisti-, ja levytilamäärittelyillä. Tämän lisäksi riittävillä oikeuksilla varustettu käyttäjä voi luoda myös mukautettuja kokoonpanoja omien tarpeidensa mukaan.
