@@ -14,13 +14,13 @@ Pilvipalveluiden tarkoituksena on tarjota resursseja asiakkaan käytettäväksi 
 Openstack on avoimen lähdekoodin ohjelma, joten kuka tahansa voi tarkastella sen eri osia ja tehdä niihin haluttavia muutoksia tai lisätä kokonaan uusia osia.
 Sen vakiokokoonpano koostuu seuraavista osista:
 
->**Nova** on pääasiallinen laskentaa suorittava ohjelma Openstackin taustalla. Se valjastaa virtuaalikoneita ja muita instansseja suorittamaan laskentaa.  
->**Swift** on varastointijärjestelmä kohteille ja tiedostoille.  
->**Cinder** Block storage -komponentti.  
->**Neutron** mahdollistaa, että Openstackin eri osat voivat kommunikoida keskenään.  
->**Horizon** tarjoaa graafisen käyttöjärjestelmän Openstackiin.  
->**Keystone** käytetään käyttäjien kartoitukseen. Listaa käyttäjät ja näyttää heille osat joiden käyttämiseen heillä on oikeudet.  
->**Glance** mahdollistaa että voidaan ottaa imageja (virtuaalisia kopioita) kovalevyistä ja käyttää näitä "kuvia" pohjina, kun asennetaan uusia virtuaalikoneita.  
+* **Nova** on pääasiallinen laskentaa suorittava ohjelma OpenStackin taustalla. Se vastaa laskentatehon jakamisesta instansseille ja OpenStackin muille moduleille.
+* **Swift** on OpenStackin ylemmän tason tiedostojenhallintakomponentti, joka vastaa kaiken OpenStackin käyttämän tiedon tallennuksesta, varmistuksesta ja varastoinnista (myös erillisten fyysisten palvelinten välillä).
+* **Cinder** on Block storage -komponentti, jonka kautta instansseille annetaan käyttöön levytilaresursseja.
+* **Neutron** on OpenStackin verkkoyhteyspalvelu, joka mahdollistaa modulien ja instanssien kommunikoinnin keskenään sekä ulkomaailman kanssa.
+* **Horizon** tarjoaa graafisen (selain-) käyttöliittymän OpenStackiin.
+* **Keystone** käytetään käyttäjien ja käyttöoikeuksien hallintaan.
+* **Glance** mahdollistaa levykuvien ottamisen ja niiden käyttämisen uusien instanssien pohjana.
 
 ## Konsepti / virtuaalitoteutus
 
