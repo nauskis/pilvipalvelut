@@ -14,17 +14,13 @@ Pilvipalveluiden tarkoituksena on tarjota resursseja asiakkaan käytettäväksi 
 Openstack on avoimen lähdekoodin ohjelma, joten kuka tahansa voi tarkastella sen eri osia ja tehdä niihin haluttavia muutoksia tai lisätä kokonaan uusia osia.
 Sen vakiokokoonpano koostuu seuraavista osista:
 
-**Nova** on pääasiallinen laskentaa suorittava ohjelma Openstackin taustalla. Se valjastaa virtuaalikoneita ja muita instansseja suorittamaan laskentaa.  
- **Swift** on varastointijärjestelmä kohteille ja tiedostoille.  
-**Cinder** Block storage -komponentti.  
-**Neutron** mahdollistaa, että Openstackin eri osat voivat kommunikoida keskenään.  
-**Horizon** tarjoaa graafisen käyttöjärjestelmän Openstackiin.  
-**Keystone** käytetään käyttäjien kartoitukseen. Listaa käyttäjät ja näyttää heille osat joiden käyttämiseen heillä on oikeudet.  
-**Glance** mahdollistaa että voidaan ottaa imageja (virtuaalisia kopioita) kovalevyistä ja käyttää näitä "kuvia" pohjina, kun
-asennetaan uusia virtuaalikoneita.  
-**Ceilometer** pitää kirjaa erillisten käyttäjien resurssien kulutuksesta (mittari / laskutus).  
-**Heat** mahdollistaa että kehittäjät voivat tallentaa eri pilvipalvelun applikaatioiden vaatimuksia tiedostoon, jossa
-määritellään mitkä resurssit ovat välttämättömiä kyseiselle ohjelmalle. **Saa selventää, vähän epävarma tästä**
+>**Nova** on pääasiallinen laskentaa suorittava ohjelma Openstackin taustalla. Se valjastaa virtuaalikoneita ja muita instansseja suorittamaan laskentaa.  
+>**Swift** on varastointijärjestelmä kohteille ja tiedostoille.  
+>**Cinder** Block storage -komponentti.  
+>**Neutron** mahdollistaa, että Openstackin eri osat voivat kommunikoida keskenään.  
+>**Horizon** tarjoaa graafisen käyttöjärjestelmän Openstackiin.  
+>**Keystone** käytetään käyttäjien kartoitukseen. Listaa käyttäjät ja näyttää heille osat joiden käyttämiseen heillä on oikeudet.  
+>**Glance** mahdollistaa että voidaan ottaa imageja (virtuaalisia kopioita) kovalevyistä ja käyttää näitä "kuvia" pohjina, kun asennetaan uusia virtuaalikoneita.  
 
 ## Konsepti / virtuaalitoteutus
 
