@@ -130,3 +130,10 @@ Koulun labraverkko itsessään ei tuottanut projektille juurikaan ongelmia, vaan
 ## Instanssien käyttöönotto
 
 OpenStackiin on helppo luoda erilaisia virtuaalikoneita (instanssi, instance) ennakkoon määriteltyjen laitteistokokoonpanojen (flavor) mukaan. DevStackin asennuksessa tulee jo valmiiksi mukana kattava valikoima kokoonpanoja erilaisilla prosessori-, muisti-, ja levytilamäärittelyillä. Tämän lisäksi riittävillä oikeuksilla varustettu käyttäjä voi luoda myös mukautettuja kokoonpanoja omien tarpeidensa mukaan.
+
+Kohtasimme paljon ongelmia juuri instanssien käyttöönotossa, kun syystä tai toisesta emme saaneet virtuaalikoneita toimimaan. Syistä selkeimpiä olivat:
+
+* väärän tyyppiset levykuvat (OpenStack toimii parhaiten QCOW2-levykuvien kanssa)
+  * QCOW2-imaget ovat täydellisiä levykuvia, joten niitä joutuu käsittelemään toimivuuden varmistamiseksi. Tähän käytetään yleensä Guestfish-työkalua, jolla voidaan mm. poistaa verkkokortin MAC-osoite ja vaihtaa käyttäjätunnukset imageen.
+* levytilan loppuminen kesken
+  * Lukuisista yrityksistä huolimatta emme saaneet määriteltyä palvelimen toista loogista levyä DevStackin käyttöön, joten käytössämme oli vain 146Gb levytilaa. Tämä levytila loppui pariin kertaan kesken, kun instansseja poistettiin, mutta virtuaalilevyt jäivät vielä talteen.
