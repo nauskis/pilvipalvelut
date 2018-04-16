@@ -35,3 +35,6 @@ https://ask.openstack.org/en/question/92701/no-valid-host-was-found-there-are-no
 
 Introduction to OpenStack:
 https://courses.edx.org/courses/course-v1:LinuxFoundationX+LFS152x+1T2018/course/
+
+XFS formatting for OpenStack:
+https://docs.openstack.org/mitaka/install-guide-rdo/swift-storage-install.html
