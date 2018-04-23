@@ -137,3 +137,8 @@ Kohtasimme paljon ongelmia juuri instanssien käyttöönotossa, kun syystä tai 
   * QCOW2-imaget ovat täydellisiä levykuvia, joten niitä joutuu käsittelemään toimivuuden varmistamiseksi. Tähän käytetään yleensä Guestfish-työkalua, jolla voidaan mm. poistaa verkkokortin MAC-osoite ja vaihtaa käyttäjätunnukset imageen.
 * levytilan loppuminen kesken
   * Lukuisista yrityksistä huolimatta emme saaneet määriteltyä palvelimen toista loogista levyä DevStackin käyttöön, joten käytössämme oli vain 146Gb levytilaa. Tämä levytila loppui pariin kertaan kesken, kun instansseja poistettiin, mutta virtuaalilevyt jäivät vielä talteen.
+
+## 23/04 tapahtunutta
+
+Päätimme asentaa koko serverin uudestaan. Ensimmäisellä kerralla tikkua ei voitu lukea ja toisella yrityksellä vika löytyi ilmeisestikin tikun asennusohjelmasta. Serveriä asentaessa virheilmoitukset viittasivat siihen, että Unetbootin ei olisi kaikkein luotettavin ohjelma kyseiseen tarkoitukseen.
+Kolmas yritys on käynnissä. Tällä kertaa tikun luomiseen käytetty Rufusta ja itse tiedosto on edelleen sama (Ubuntu Server 16.04.4 LTS). Päätimme tarkastaa tikun viottuneisuuden varalta, mikä vei lähes tunnin.
