@@ -3,7 +3,7 @@
 
 **Jussi Isosomppi, Samuli Kinnunen, Mikko Knutas, Eino Kupias, Saku Kähäri**
 
-###### **DevStack asennettu alusta loppuun uudestaan `16` kertaa**
+###### **DevStack asennettu alusta loppuun uudestaan `18` kertaa**
 
 ## Mitä, Miksi
 Projektimme tavoitteena on alustavasti ollut pystyttää koulun palvelimelle oma pilvipalvelu (Openstack) ja luoda sinne eri käyttöjärjestelmillä toimivia virtuaalikoneita. Tämä saattaa vielä kestää tovin, joten ei mennä vielä sen pidemmälle.
